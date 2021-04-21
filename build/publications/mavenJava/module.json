@@ -1,0 +1,90 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.peacetrue.merchant",
+    "module": "peacetrue-merchant",
+    "version": "1.0.0-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.4",
+      "buildId": "2sbwtl2gsva2hounkhygxlu6cq"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "peacetrue-merchant-1.0.0-SNAPSHOT.jar",
+          "url": "peacetrue-merchant-1.0.0-SNAPSHOT.jar",
+          "size": 261,
+          "sha512": "09d2fdfcb89bffc4890e9457f866cefe56582414c4828b68b9c9c2609207f4f2d7d9dedab0bac786355d79a46423bde9d598c7677422d66796559ba920f3e9ae",
+          "sha256": "be2e3e2d897602cea3b3a6bb06744164fa7697c8f66e2a8203d9b9cb75687165",
+          "sha1": "ce7f805caac5e1e525315b5e51113d61ee4112f5",
+          "md5": "4d8bd01d7fc6473f3db3f08077bf83dc"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.google.code.findbugs",
+          "module": "jsr305",
+          "version": {
+            "requires": "3.0.2"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "peacetrue-merchant-1.0.0-SNAPSHOT.jar",
+          "url": "peacetrue-merchant-1.0.0-SNAPSHOT.jar",
+          "size": 261,
+          "sha512": "09d2fdfcb89bffc4890e9457f866cefe56582414c4828b68b9c9c2609207f4f2d7d9dedab0bac786355d79a46423bde9d598c7677422d66796559ba920f3e9ae",
+          "sha256": "be2e3e2d897602cea3b3a6bb06744164fa7697c8f66e2a8203d9b9cb75687165",
+          "sha1": "ce7f805caac5e1e525315b5e51113d61ee4112f5",
+          "md5": "4d8bd01d7fc6473f3db3f08077bf83dc"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "peacetrue-merchant-1.0.0-SNAPSHOT-sources.jar",
+          "url": "peacetrue-merchant-1.0.0-SNAPSHOT-sources.jar",
+          "size": 261,
+          "sha512": "09d2fdfcb89bffc4890e9457f866cefe56582414c4828b68b9c9c2609207f4f2d7d9dedab0bac786355d79a46423bde9d598c7677422d66796559ba920f3e9ae",
+          "sha256": "be2e3e2d897602cea3b3a6bb06744164fa7697c8f66e2a8203d9b9cb75687165",
+          "sha1": "ce7f805caac5e1e525315b5e51113d61ee4112f5",
+          "md5": "4d8bd01d7fc6473f3db3f08077bf83dc"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "peacetrue-merchant",
+  "version": "0.1.0",
+  "description": "商家",
+  "files": [
+    "src/modules"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peacetrue/peacetrue-merchant.git"
+  }
+}

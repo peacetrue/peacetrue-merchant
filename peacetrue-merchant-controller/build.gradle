@@ -1,0 +1,11 @@
+description '商家控制器'
+
+dependencies {
+    api project(":peacetrue-merchant-service-api")
+    implementation "com.github.peacetrue:peacetrue-spring"
+    implementation "org.springframework.boot:spring-boot-starter-webflux"
+    implementation "org.springframework.data:spring-data-commons"
+
+    testImplementation project(':peacetrue-merchant-service-impl')
+    testImplementation project(path: ':peacetrue-merchant-service-impl', configuration: 'testArtifacts')
+}

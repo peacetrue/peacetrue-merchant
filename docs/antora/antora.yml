@@ -1,0 +1,9 @@
+name: peacetrue-merchant
+title: 商家模块
+version: master
+asciidoc:
+  attributes:
+    numbered: ''
+start_page: ROOT:index.adoc
+nav:
+  - modules/ROOT/nav.adoc
