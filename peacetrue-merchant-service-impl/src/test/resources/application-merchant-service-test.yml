@@ -1,0 +1,9 @@
+logging:
+  level:
+    com.github.peacetrue: trace
+#    org.springframework: debug
+
+peacetrue:
+  init:
+    schema-script-locations:
+      'com.github.peacetrue.merchant.Merchant': /schema-merchant-h2.sql

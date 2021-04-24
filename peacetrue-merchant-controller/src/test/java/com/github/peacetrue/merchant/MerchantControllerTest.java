@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.util.function.Consumer;
@@ -17,18 +18,19 @@ import static com.github.peacetrue.merchant.MerchantServiceImplTest.EASY_RANDOM;
 /**
  * @author xiayx
  */
-@SpringBootTest(classes = TestControllerMemberAutoConfiguration.class)
+@SpringBootTest(classes = TestControllerMerchantAutoConfiguration.class)
 @AutoConfigureWebTestClient
+@ActiveProfiles({"member-controller-test", "merchant-service-test"})
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class MemberControllerTest {
+class MerchantControllerTest {
 
     @Autowired
     private WebTestClient client;
 
     @Test
     @Order(10)
-    public void add() {
-        this.client.post().uri("/members")
+    void add() {
+        this.client.post().uri("/merchants")
                 .bodyValue(MerchantServiceImplTest.ADD)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
@@ -39,9 +41,9 @@ public class MemberControllerTest {
 
     @Test
     @Order(20)
-    public void queryForPage() {
+    void queryForPage() {
         this.client.get()
-                .uri("/members?page=0")
+                .uri("/merchants?page=0")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
@@ -51,9 +53,9 @@ public class MemberControllerTest {
 
     @Test
     @Order(30)
-    public void queryForList() {
+    void queryForList() {
         this.client.get()
-                .uri("/members")
+                .uri("/merchants")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
@@ -63,9 +65,9 @@ public class MemberControllerTest {
 
     @Test
     @Order(40)
-    public void get() {
+    void get() {
         this.client.get()
-                .uri("/members/{0}", MerchantServiceImplTest.vo.getId())
+                .uri("/merchants/{0}", MerchantServiceImplTest.vo.getId())
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
@@ -76,9 +78,9 @@ public class MemberControllerTest {
 
     @Test
     @Order(45)
-    public void exists() {
+    void exists() {
         this.client.get()
-                .uri("/members/exists?id=", MerchantServiceImplTest.vo.getId())
+                .uri("/merchants/exists?id=", MerchantServiceImplTest.vo.getId())
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
@@ -89,11 +91,11 @@ public class MemberControllerTest {
 
     @Test
     @Order(50)
-    public void modify() {
+    void modify() {
         MerchantModify modify = MerchantServiceImplTest.MODIFY;
         modify.setId(MerchantServiceImplTest.vo.getId());
         this.client.put()
-                .uri("/members/{id}", MerchantServiceImplTest.vo.getId())
+                .uri("/merchants/{id}", MerchantServiceImplTest.vo.getId())
                 .bodyValue(modify)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
@@ -104,13 +106,13 @@ public class MemberControllerTest {
 
     @Test
     @Order(55)
-    public void modifyPassword() {
+    void modifyPassword() {
         MerchantModifyPassword modify = EASY_RANDOM.nextObject(MerchantModifyPassword.class);
         modify.setId(MerchantServiceImplTest.vo.getId());
         modify.setOldPassword(MerchantServiceImplTest.ADD.getPassword());
         modify.setOperatorId(MerchantServiceImplTest.vo.getId());
         this.client.put()
-                .uri("/members/{id}/password", MerchantServiceImplTest.vo.getId())
+                .uri("/merchants/{id}/password", MerchantServiceImplTest.vo.getId())
                 .bodyValue(modify)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
@@ -121,12 +123,12 @@ public class MemberControllerTest {
 
     @Test
     @Order(56)
-    public void resetPassword() {
+    void resetPassword() {
         MerchantResetPassword modify = new MerchantResetPassword();
         modify.setId(MerchantServiceImplTest.vo.getId());
         modify.setOperatorId(MerchantServiceImplTest.vo.getId());
         this.client.put()
-                .uri("/members/{id}/password/reset", MerchantServiceImplTest.vo.getId())
+                .uri("/merchants/{id}/password/reset", MerchantServiceImplTest.vo.getId())
                 .bodyValue(modify)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
@@ -137,9 +139,9 @@ public class MemberControllerTest {
 
     @Test
     @Order(60)
-    public void delete() {
+    void delete() {
         this.client.delete()
-                .uri("/members/{0}", MerchantServiceImplTest.vo.getId())
+                .uri("/merchants/{0}", MerchantServiceImplTest.vo.getId())
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
@@ -149,8 +151,8 @@ public class MemberControllerTest {
 
     @Test
     @Order(70)
-    public void register() {
-        this.client.post().uri("/members/register")
+    void register() {
+        this.client.post().uri("/merchants/register")
                 .bodyValue(MerchantServiceImplTest.REGISTER)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()

@@ -25,4 +25,7 @@ public class ServiceMerchantProperties {
     @NotNull
     @Min(1)
     private Integer maxCountOfQuery = 100;
+
+    /** 初始化 SQL 位置 */
+    private String sqlLocation = "/schema-merchant-mysql.sql";
 }
