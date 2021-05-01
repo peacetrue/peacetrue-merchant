@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 public interface MerchantService {
 
     /** 系统商家 id */
-    Long MEMBER_SYSTEM_ID = 0L;
+    Long MERCHANT_SYSTEM_ID = 0L;
     /** 管理员商家 id */
-    Long MEMBER_ADMIN_ID = 1L;
+    Long MERCHANT_ADMIN_ID = 1L;
 
     /** 新增 */
     Mono<MerchantVO> add(MerchantAdd params);

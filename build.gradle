@@ -9,7 +9,7 @@ buildscript {
     }
 }
 
-subprojects { project ->
+allprojects { project ->
 
     group "com.github.peacetrue.merchant"
     version "1.0.0-SNAPSHOT"

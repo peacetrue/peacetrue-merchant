@@ -1,0 +1,12 @@
+description '用户安全'
+
+dependencies {
+    api project(":peacetrue-merchant-service-api")
+    implementation "com.github.peacetrue:peacetrue-spring"
+    implementation "org.springframework.boot:spring-boot-starter-webflux"
+    implementation "org.springframework.data:spring-data-commons"
+    implementation 'org.springframework.security:spring-security-core'
+
+    testImplementation project(':peacetrue-merchant-service-impl')
+    testImplementation project(path: ':peacetrue-merchant-service-impl', configuration: 'testArtifacts')
+}

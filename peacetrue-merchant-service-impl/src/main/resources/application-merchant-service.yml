@@ -1,4 +1,4 @@
 peacetrue:
   init:
-    schema-script-locations:
+    conditional-script-locations:
       'com.github.peacetrue.merchant.Merchant': /schema-merchant-mysql.sql

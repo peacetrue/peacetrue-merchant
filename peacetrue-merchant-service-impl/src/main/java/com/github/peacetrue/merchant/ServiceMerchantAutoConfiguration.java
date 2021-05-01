@@ -1,5 +1,6 @@
 package com.github.peacetrue.merchant;
 
+import com.github.peacetrue.spring.core.io.support.YamlPropertySourceFactory;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,7 @@ import java.util.Objects;
 @Configuration
 @EnableConfigurationProperties(ServiceMerchantProperties.class)
 @ComponentScan(basePackageClasses = ServiceMerchantAutoConfiguration.class)
-@PropertySource("classpath:/application-merchant-service.yml")
+@PropertySource(value = "classpath:/application-merchant-service.yml", factory = YamlPropertySourceFactory.class)
 public class ServiceMerchantAutoConfiguration {
 
     private ServiceMerchantProperties properties;
