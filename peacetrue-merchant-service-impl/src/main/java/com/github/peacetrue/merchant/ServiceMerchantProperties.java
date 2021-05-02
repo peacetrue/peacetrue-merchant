@@ -7,6 +7,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author xiayx
@@ -25,6 +28,9 @@ public class ServiceMerchantProperties {
     @NotNull
     @Min(1)
     private Integer maxCountOfQuery = 100;
+
+    /** 内置的用户，不允许删除，根据用户名指定，例如：admin */
+    private Set<String> buildInUsers = new HashSet<>(Arrays.asList("system", "admin"));
 
     /** 初始化 SQL 位置 */
     private String sqlLocation = "/schema-merchant-mysql.sql";

@@ -246,10 +246,19 @@ public class MerchantServiceImpl implements MerchantService {
         Criteria where = CriteriaUtils.id(params::getId);
         Query idQuery = Query.query(where);
         return entityTemplate.selectOne(idQuery, Merchant.class)
+                .doOnNext(entity -> log.debug("取得商家[{}]", entity))
+                .doOnNext(entity -> {
+                    if (properties.getBuildInUsers().contains(entity.getUsername())) {
+                        throw new ResultException(ResultType.failure.name(), "禁止删除内置用户[" + entity.getUsername() + "]");
+                    }
+                })
+                .zipWhen(entity -> entityTemplate.delete(idQuery, Merchant.class)
+                        .doOnNext(count -> log.debug("删除商家[{}]影响[{}]行", params.getId(), count))
+                        .thenReturn(entity)
+                )
                 .map(item -> BeanUtils.map(item, MerchantVO.class))
-                .zipWhen(region -> entityTemplate.delete(idQuery, Merchant.class))
-                .doOnNext(tuple2 -> eventPublisher.publishEvent(new PayloadApplicationEvent<>(tuple2.getT1(), params)))
-                .map(Tuple2::getT2)
+                .doOnNext(vo -> eventPublisher.publishEvent(new PayloadApplicationEvent<>(vo, params)))
+                .map(vo -> 1)
                 .switchIfEmpty(Mono.just(0));
     }
 
